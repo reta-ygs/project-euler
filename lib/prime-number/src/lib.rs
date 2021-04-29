@@ -18,6 +18,7 @@ mod tests {
     fn test_prime_factors() {
         assert_eq!(prime_factors(2), vec![(2, 1)].iter().copied().collect());
         assert_eq!(prime_factors(4), vec![(2, 2)].iter().copied().collect());
+        assert_eq!(prime_factors(8), vec![(2, 3)].iter().copied().collect());
         assert_eq!(
             prime_factors(10),
             vec![(2, 1), (5, 1)].iter().copied().collect()
@@ -39,7 +40,7 @@ pub fn is_prime_number(target: usize) -> bool {
         .all(|num| target % num != 0)
 }
 
-pub fn prime_factors(number: usize) -> HashMap<usize, usize> {
+pub fn prime_factors(number: usize) -> HashMap<usize, u32> {
     let mut factors = HashMap::new();
     let mut remaining = number;
     for n in (2..=number)
